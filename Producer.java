@@ -16,7 +16,7 @@ public class Sender {
         
         KafkaProducer<String, byte[]> producer = new KafkaProducer<String, byte[]>(properties, new StringSerializer(), new ByteArraySerializer());
         for (int i = 0 ; i < 100; i++) {
-        	byte[] payload = (" -- " + i).getBytes();
+        	byte[] payload = (i).getBytes();
         	ProducerRecord<String, byte[]> record = new ProducerRecord<String, byte[]>("test", payload);
         	producer.send(record);
         	Thread.sleep(1000);
